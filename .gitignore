@@ -1,0 +1,11 @@
+### Python ###
+*.pyc
+*~
+__pycache__
+
+### Env ###
+.env
+env/
+
+### Static folder at project root ###
+/static/
