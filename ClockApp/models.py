@@ -35,3 +35,26 @@ class SysLog(models.Model):
         db_table = 'SysLog'
         get_latest_by = 'logid'
         ordering = ["-logid"]
+
+
+# Customer table
+class Customer(models.Model):
+    cID = models.IntegerField(db_column='cID', primary_key=True) # Unique ID
+    cDateCreated = models.DateTimeField(db_column='cDateCreated', blank=True, null=True) # Date customer was added to the system (set by DB)
+    cName = models.CharField(db_column='cName', max_length=64, blank=False, null=False) # Customer's full name
+    cPhone = models.CharField(db_column='cPhone', max_length=10, blank=False, null=False) # 10 digit US phone number
+    cGender = models.CharField(db_column='cGender', max_length=1, blank=False, null=False) # 'M' or 'F'
+    cDOB = models.DateTimeField(db_column='cDOB', blank=True, null=True) # Customer's date of birth (may generate mostly NULLs)
+    cEmail = models.CharField(db_column='cEmail', max_length=128, blank=False, null=False) # Customer's email address (and name for system login)
+    cPW = models.CharField(db_column='cPW', max_length=16, blank=False, null=False) # Password
+    cAddress1 = models.CharField(db_column='cAddress1', max_length=64, blank=False, null=False) # Customer's street address
+    cAddress2 = models.CharField(db_column='cAddress2', max_length=16, blank=False, null=False) # Customer's Apt, Unit, Suite, etc
+    cCity = models.CharField(db_column='cCity', max_length=16, blank=False, null=False) # Customer's City
+    cState = models.CharField(db_column='cState', max_length=2, blank=False, null=False) # Customer's State
+    cZip = models.CharField(db_column='cZip', max_length=7, blank=False, null=False) # Customer's Zip Code
+
+    class Meta:
+        managed = True
+        db_table = 'Customer'
+        get_latest_by = 'cID'
+        ordering = ["-cName"]

@@ -1,0 +1,20 @@
+{% extends 'ClockApp/base.html' %}
+
+{% block content %}
+{% for customers in customers %}
+<div class="customer">
+
+  {{ customers.cName }}
+  {{ customers.cAddress1 }}
+  {% if customers.cAddress2 != '' %}
+  , {{ customers.cAddress2 }}
+    {% else %}
+    <!-- (customers.cAddress2) empty -->
+    {% endif %}
+  , {{ customers.cCity }}
+  , {{ customers.cState }}
+  {{ customers.cZip }}
+</div>
+{% endfor %}
+{% endblock %}
+
